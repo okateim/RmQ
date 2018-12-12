@@ -15,7 +15,7 @@ def main():
         VERBOSE = True
 
     print("Input filename (if you want to use default file, press ENTER): ", end="")
-    filename = input()
+    filename = input().strip()
     if re.match(r'^\s*$', filename):
         filename = cfg.INPUT_FILE  # default input file
 

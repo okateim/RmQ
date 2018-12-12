@@ -1,7 +1,6 @@
 from  pathlib import Path
 import sys
 import math
-from copy import copy
 
 sys.path.append(str(Path(__file__).absolute().parents[1]))
 from lib import config as cfg
@@ -9,11 +8,13 @@ from lib.sparse import SparseTable as ST
 from lib.inblock import InBlock as IB
 
 class RmQDataStructure():
+    __slots__ = ['A', 'N', 'st', 'blocks', 'InblockMin', 'block_size']
+
     def __init__(self, A):
-        self.A = copy(A)
+        self.A = A
         self.N = len(A)
         self.block_size = math.floor(math.log2(self.N)/2.0)
-        self.block_num  = math.ceil(self.N / self.block_size)
+        block_num  = math.ceil(self.N / self.block_size)
         
         self.InblockMin = list()
         m, argm = cfg.INF, -1
@@ -26,7 +27,7 @@ class RmQDataStructure():
         self.st = ST(self.InblockMin)
         
         self.blocks = list()
-        for i in range(self.block_num):
+        for i in range(block_num):
             s = i * self.block_size
             t = s + self.block_size
             inblock_DS = IB(A[s:t])

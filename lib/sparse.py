@@ -6,6 +6,7 @@ class SparseTable():
         self.array: inputu array (size N)
         self.st   : sparse table (size N x log_N + 1)
     """
+    __slot__ = ['array', 'st']
     def __init__(self, array):
         """
             create sparse table

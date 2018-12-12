@@ -30,13 +30,14 @@ class InBlock():
         self.array: input array
         self.l    : integer (representation of bit arrays)
     """
+    __slots__ = ['array', 'l']
     def __init__(self, array):
         self.array = array
         M = len(array)
         st = MyStack()
         st.push((-1, -1))  # sentinel 
 
-        # ビット列 l[0..M-1] の作成
+        # create bit array l[0..M-1]
         self.l = [1 for i in range(M)]
         for j in range(M):
             if j != 0:
@@ -46,6 +47,7 @@ class InBlock():
                 self.l[j] = self.l[j] ^ (1 << pop[1])
             st.push((self.array[j], j))
             self.l[j] = self.l[j] | 1 << j
+        del st
      
     def _mask(self, target, mask_num):
         """
