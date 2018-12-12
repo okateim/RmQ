@@ -1,4 +1,6 @@
-* ディレクトリ構成
+# ディレクトリ構成
+
+```
   .
   ├── README.txt      # 本ファイル
   ├── input.csv       # 入力用のファイル(csv)
@@ -8,12 +10,20 @@
   │   ├── rmq.py
   │   └── sparse.py
   └── rmq             # コマンド本体(python)
+```
   
-* Python のバージョンは 3.4 以上を想定
+# Python のバージョン
+
+3.4 以上を想定
+
+```
 $ python -V
 Python 3.6.3 :: Anaconda, Inc.
+```
 
-* 実行方法
+# 実行方法
+
+```
 $ ./rmq
 Input filename (if you want to use default file, press ENTER):  <- csvファイル名を入力
 
@@ -25,8 +35,11 @@ end position: 6               <- 終了位置を入力(添字は 0 始まり)
 Input query positions (input 'q' for quite)
 start position: q             <- クエリ入力を無限回求めてくるので、q で停止
 $ 
+```
 
-* -v を付与すると詳細情報を表示する
+-v を付与すると詳細情報を表示する
+
+```
 $ ./rmq -v
 Input filename (if you want to use default file, press ENTER):
 Input filename is /Users/mieno/work/RmQ/input.csv
@@ -47,3 +60,4 @@ A[1..6] = [4693, 5116, 6808, 9953, 7674, 4905]
 Input query positions (input 'q' for quite)
 start position: q
 $ 
+```
