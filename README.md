@@ -42,7 +42,7 @@ $
 ```
 $ ./rmq -v
 Input filename (if you want to use default file, press ENTER):
-Input filename is /Users/mieno/work/RmQ/input.csv
+Input filename is /path/to/the/file/input.csv
 Input array is A[0..99]
 Preprocessing...
 Complete!
