@@ -20,7 +20,7 @@ Stephen Alstrup, Cyril Gavoille, Haim Kaplan and Theis Rauhe, Nearest Common Anc
   
 # Python のバージョン
 
-3.4 以上を想定
+3.6 以上を想定
 
 ```
 $ python -V

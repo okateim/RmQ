@@ -3,8 +3,11 @@
 
 from  pathlib import Path
 import sys
+import os
 import re
 sys.path.append(str(Path(__file__).absolute().parents[1]))
+from lib import config as cfg
+from lib.utils import debug
 from lib.rmq import RmQDataStructure
 
 DEFAULT_INPUT_FILE = Path(__file__).absolute().parents[0] / "input.csv"
@@ -13,6 +16,11 @@ def main():
     VERBOSE = False
     if len(sys.argv) > 1 and sys.argv[1] == "-v":
         VERBOSE = True
+
+    if os.environ.get("DEBUG") is not None:
+        cfg.DEBUG_MODE = True
+        VERBOSE = True
+        debug("==================== DEBUG MODE ====================");
 
     print("Input filename (if you want to use default file, press ENTER): ", end="")
     filename = input().strip()
@@ -27,8 +35,10 @@ def main():
         print(f'Input array is A[0..{len(A) - 1}]');
         print("Preprocessing...");
     ds = RmQDataStructure(A)
+    del A
     if VERBOSE:
         print("Complete!");
+        print("\nA = " + str(ds.A))
 
     while True:
         print("\nInput query positions (input 'q' for quite)");
@@ -40,7 +50,7 @@ def main():
             sys.stderr.write(f"ERROR: Invalid value '{i}'\n")
             sys.exit(1)
         i = int(i)
-        if i < 0 or len(A) <= i:
+        if i < 0 or len(ds.A) <= i:
             sys.stderr.write(f"ERROR: Index out of range '{i}'\n")
             sys.exit(1)
         print("end position: ", end="")
@@ -51,16 +61,15 @@ def main():
             sys.stderr.write(f"ERROR: Invalid value '{j}'\n")
             sys.exit(1)
         j = int(j)
-        if j < 0 or len(A) <= j:
+        if j < 0 or len(ds.A) <= j:
             sys.stderr.write(f"ERROR: Index out of range '{j}'\n")
             sys.exit(1)
 
         ans = ds.RmQ(i, j)
 
         if VERBOSE:
-            print("\nA = " + str(ds.A))
-            print(f"\nRmQ({i}, {j}) = {str(ans)}")
             print(f"\nA[{i}..{j}] = {str(ds.A[i:j+1])}")
+            print(f"\nRmQ({i}, {j}) = {str(ans)}")
         else:
            print(ans)
 

@@ -7,6 +7,9 @@ import re
 
 sys.path.append(str(Path(__file__).absolute().parents[1]))
 from lib import config as cfg
+from lib.rmq import RmQDataStructure
+
+DEFAULT_INPUT_FILE = Path(__file__).absolute().parents[0] / "input.csv"
 
 def main():
     VERBOSE = False
@@ -16,7 +19,7 @@ def main():
     print("Input filename (if you want to use default file, press ENTER): ", end="")
     filename = input().strip()
     if re.match(r'^\s*$', filename):
-        filename = cfg.INPUT_FILE  # default input file
+        filename = DEFAULT_INPUT_FILE  # default input file
 
     with open(filename, 'r') as f:
         str_list = f.read().split(',')
