@@ -2,14 +2,14 @@
 
 ```
   .
-  ├── README.txt      # 本ファイル
+  ├── README.md       # 本ファイル
   ├── input.csv       # 入力用のファイル(csv)
   ├── lib             # ライブラリ置き場
-  │   ├── config.py
-  │   ├── inblock.py
-  │   ├── rmq.py
-  │   └── sparse.py
-  └── rmq             # コマンド本体(python)
+  │   ├── config.py   # 定数値の設定ファイル
+  │   ├── rmq.py      # RmQ ロジックの実装
+  │   └── utils.py    # utility
+  ├── rmq             # コマンド本体(python)
+  └── rmq_naive       # ナイーブアルゴリズム
 ```
   
 # Python のバージョン
@@ -42,7 +42,7 @@ $
 ```
 $ ./rmq -v
 Input filename (if you want to use default file, press ENTER):
-Input filename is /path/to/the/file/input.csv
+Input filename is /path/to/csv/file/input.csv
 Input array is A[0..99]
 Preprocessing...
 Complete!

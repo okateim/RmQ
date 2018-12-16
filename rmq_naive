@@ -24,26 +24,14 @@ def main():
     if VERBOSE:
         print("Input filename is " + str(filename));
         print(f'Input array is A[0..{len(A) - 1}]');
-#        print("Preprocessing...");
-#    ds = RmQDS(A)
-#    if VERBOSE:
-#        print("Complete!");
 
     while True:
         print("\nInput query positions (input 'q' for quite)");
         print("start position: ", end="")
         i = input()
-        if i == 'q':
-            sys.exit(0) 
-        elif not i.isdigit():
-            sys.exit(1)
         i = int(i)
         print("end position: ", end="")
         j = input()
-        if j == 'q':
-            sys.exit(0) 
-        elif not j.isdigit():
-            sys.exit(1)
         j = int(j)
 
         ans = naiveRmQ(A, i, j)

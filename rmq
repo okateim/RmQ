@@ -4,10 +4,10 @@
 from  pathlib import Path
 import sys
 import re
-
 sys.path.append(str(Path(__file__).absolute().parents[1]))
-from lib.rmq import RmQDataStructure as RmQDS
-from lib import config as cfg
+from lib.rmq import RmQDataStructure
+
+DEFAULT_INPUT_FILE = Path(__file__).absolute().parents[0] / "input.csv"
 
 def main():
     VERBOSE = False
@@ -17,7 +17,7 @@ def main():
     print("Input filename (if you want to use default file, press ENTER): ", end="")
     filename = input().strip()
     if re.match(r'^\s*$', filename):
-        filename = cfg.INPUT_FILE  # default input file
+        filename = DEFAULT_INPUT_FILE # default input file
 
     with open(filename, 'r') as f:
         str_list = f.read().split(',')
@@ -26,7 +26,7 @@ def main():
         print("Input filename is " + str(filename));
         print(f'Input array is A[0..{len(A) - 1}]');
         print("Preprocessing...");
-    ds = RmQDS(A)
+    ds = RmQDataStructure(A)
     if VERBOSE:
         print("Complete!");
 
@@ -37,22 +37,30 @@ def main():
         if i == 'q':
             sys.exit(0) 
         elif not i.isdigit():
+            sys.stderr.write(f"ERROR: Invalid value '{i}'\n")
             sys.exit(1)
         i = int(i)
+        if i < 0 or len(A) <= i:
+            sys.stderr.write(f"ERROR: Index out of range '{i}'\n")
+            sys.exit(1)
         print("end position: ", end="")
         j = input()
         if j == 'q':
             sys.exit(0) 
         elif not j.isdigit():
+            sys.stderr.write(f"ERROR: Invalid value '{j}'\n")
             sys.exit(1)
         j = int(j)
+        if j < 0 or len(A) <= j:
+            sys.stderr.write(f"ERROR: Index out of range '{j}'\n")
+            sys.exit(1)
 
         ans = ds.RmQ(i, j)
 
         if VERBOSE:
             print("\nA = " + str(ds.A))
-            print(f"\nRmQ({i}, {j}) = " + str(ans))
-            print(f"\nA[{i}..{j}] = " + str(ds.A[i:j+1]))
+            print(f"\nRmQ({i}, {j}) = {str(ans)}")
+            print(f"\nA[{i}..{j}] = {str(ds.A[i:j+1])}")
         else:
            print(ans)
 
