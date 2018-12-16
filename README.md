@@ -1,3 +1,9 @@
+# 概要
+
+本リポジトリのコードは、下記論文で提案されたアルゴリズムを Python で実装したものです。
+
+Stephen Alstrup, Cyril Gavoille, Haim Kaplan and Theis Rauhe, Nearest Common Ancestors: A Survey and a New Distributed Algorithm. In Proc. 14th annual ACM symposium on Parallel algorithms and architectures, pp.258–264, 2002.
+
 # ディレクトリ構成
 
 ```
