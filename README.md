@@ -9,12 +9,13 @@ Stephen Alstrup, Cyril Gavoille, Haim Kaplan and Theis Rauhe, Nearest Common Anc
 ```
   .
   ├── README.md       # 本ファイル
+  ├── sample.py       # サンプルスクリプト
   ├── input.csv       # 入力用のファイル
   ├── lib             # ライブラリ置き場
   │   ├── config.py   # 定数値の設定ファイル
   │   ├── rmq.py      # RmQ ロジックの実装
   │   └── utils.py    # utility
-  ├── rmq             # コマンド本体(python)
+  ├── rmq             # 対話式コマンド
   ├── rmq_naive       # ナイーブアルゴリズム
   └── test            # テストコード置き場
       ├── test.csv    # テスト用入力ファイル
@@ -30,7 +31,7 @@ $ python -V
 Python 3.6.3 :: Anaconda, Inc.
 ```
 
-# 実行方法
+# 動作確認方法
 
 ```
 $ ./rmq
