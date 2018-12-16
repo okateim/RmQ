@@ -9,13 +9,16 @@ Stephen Alstrup, Cyril Gavoille, Haim Kaplan and Theis Rauhe, Nearest Common Anc
 ```
   .
   ├── README.md       # 本ファイル
-  ├── input.csv       # 入力用のファイル(csv)
+  ├── input.csv       # 入力用のファイル
   ├── lib             # ライブラリ置き場
   │   ├── config.py   # 定数値の設定ファイル
   │   ├── rmq.py      # RmQ ロジックの実装
   │   └── utils.py    # utility
   ├── rmq             # コマンド本体(python)
-  └── rmq_naive       # ナイーブアルゴリズム
+  ├── rmq_naive       # ナイーブアルゴリズム
+  └── test            # テストコード置き場
+      ├── test.csv    # テスト用入力ファイル
+      └── test.py     # テストコード
 ```
   
 # Python のバージョン
